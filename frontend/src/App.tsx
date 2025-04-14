@@ -5,7 +5,7 @@ function App() {
   const [message, setMessage] = useState("");
 
   function getbackEndMessage() {
-    fetch("http://localhost:80/message")
+    fetch("/api/message")
       .then((response) => response.json())
       .then((data) => setMessage(data.message))
       .catch((error) => console.error("Error fetching data:", error));

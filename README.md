@@ -26,3 +26,9 @@ From the root directory:
 ```bash
 docker compose up --build
 ```
+
+# Application will run on (default port 80)
+
+```bash
+http://localhost/
+```

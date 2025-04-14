@@ -1,19 +1,32 @@
-version: "3"
+version: "3.8"
 
 services:
   front-end:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "5173:5173"
+    command: npm run dev
     volumes:
       - ./frontend/src:/app/src
-    command: npm run dev
+    networks:
+      - dev-networks
 
   back-end:
     build:
       context: ./backend
-      dockerfile: Dockerfile
+    networks:
+      - dev-networks
+
+  nginx:
+    build:
+      context: ./nginx
     ports:
       - "80:80"
+    depends_on:
+      - front-end
+      - back-end
+    networks:
+      - dev-networks
+
+networks:
+  dev-networks:
+    driver: bridge
