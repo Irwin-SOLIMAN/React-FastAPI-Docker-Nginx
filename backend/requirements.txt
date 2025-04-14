@@ -1,0 +1,2 @@
+union[standard]
+fastapi[standard]
